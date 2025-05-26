@@ -24,6 +24,7 @@ public class CartService {
     }
 
     public CartEntity createCart(CreateCartRequest request) {
+        CartEntity cart = new CartEntity();
         List<CartItemEntity> items = new ArrayList<>();
         double TotalPrice = 0;
 
@@ -46,7 +47,7 @@ public class CartService {
             productRepository.save(product);
 
             CartItemEntity item = new CartItemEntity();
-            item.setId(product.getId());
+            item.setProductId(product.getId());
             item.setName(product.getName());
             item.setQuantity(itemReq.getQuantity());
             item.setPrice(product.getPrice());
@@ -55,8 +56,7 @@ public class CartService {
             items.add(item);
         }
 
-        CartEntity cart = new CartEntity();
-        cart.setItems(items);
+        cart.setCartItems(items);
         cart.setTotalPrice(TotalPrice);
 
         return cartRepository.save(cart);

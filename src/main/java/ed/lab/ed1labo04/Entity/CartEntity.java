@@ -15,7 +15,7 @@ public class CartEntity {
     private double totalPrice;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<CartItemEntity> items;
+    private List<CartItemEntity> cartItems;
 
 
     public Long getId() {
@@ -34,15 +34,15 @@ public class CartEntity {
         this.totalPrice = totalPrice;
     }
 
-    public List<CartItemEntity> getItems() {
-        return items;
+    public List<CartItemEntity> getCartItems() {
+        return cartItems;
     }
 
-    public void setItems(List<CartItemEntity> items) {
-        this.items = items;
+    public void setCartItems(List<CartItemEntity> items) {
+        this.cartItems = items;
     }
 
-    public void addItem(CartItemEntity item) {
-        this.items.add(item);
+    public void addItem(CartItemEntity cartItemEntity) {
+        this.cartItems.add(cartItemEntity);
     }
 }
